@@ -40,10 +40,6 @@ class DateFormatter {
             else -> return "error"
         }
 
-
-//        when(calendar.get(Calendar.DAY_OF_WEEK)){
-//            Calendar.SUNDAY -> return "sunday"
-//        }
         return str
     }
 }
