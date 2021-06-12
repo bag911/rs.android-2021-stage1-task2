@@ -1,5 +1,7 @@
 package subtask3
 
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import kotlin.reflect.KClass
 import kotlin.reflect.typeOf
 
@@ -7,11 +9,17 @@ class Blocks {
 
 
     fun getData(blockA: Array<*>, blockB: KClass<*>): Any {
+        return when(blockB){
+            String::class -> blockA.filterIsInstance<String>().joinToString("")
 
-        if(blockB.isInstance(String())){
-            return "x"
+            Int::class -> blockA.filterIsInstance<Int>().sum()
+
+            LocalDate::class ->  {
+                blockA.filterIsInstance<LocalDate>().max()!!.format(
+                    DateTimeFormatter.ofPattern("dd.MM.yyyy")
+                )
+            }
+            else -> 0
         }
-
-        return "value"
     }
 }
